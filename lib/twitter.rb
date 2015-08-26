@@ -5,4 +5,4 @@ module Twitter
 end
 
 require "twitter/database_connection"
-require "twitter/user_sign_up"
+require "twitter/user"

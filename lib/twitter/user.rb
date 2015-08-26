@@ -1,5 +1,5 @@
 module Twitter
-  class UserSignUp
+  class User
 
     def initialize(username, password, db_connection)
       @username = username
@@ -12,5 +12,8 @@ module Twitter
       result.ntuples == 0 ? true : false
     end
 
+    def sign_up
+      @db_connection.exec("insert into users (username, password) values ('#{@username}', '#{@password}')") if username_available?
+    end
   end
 end
