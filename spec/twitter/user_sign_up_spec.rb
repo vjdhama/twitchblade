@@ -2,7 +2,7 @@ require "spec_helper"
 
 module Twitter
   describe "UserSignup" do
-    let(:connection) { DatabaseConnection.new("twitter_spec", "testing") }
+    let(:connection) { DatabaseConnection.new("twitter_spec") }
     let(:user_sign_up_1) { UserSignUp.new("vijay", "123", connection.conn) }
     let(:user_sign_up_2) { UserSignUp.new("vjdhama", "123", connection.conn) }
 

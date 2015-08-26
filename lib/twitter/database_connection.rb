@@ -3,7 +3,7 @@ module Twitter
   class DatabaseConnection
     attr_reader :conn
 
-    def initialize(dbname, environment = "development")
+    def initialize(dbname)
       @conn = PGconn.open(:dbname => dbname)
       @conn
     end
