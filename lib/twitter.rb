@@ -4,4 +4,5 @@ require "figaro"
 module Twitter
 end
 
-require "twitter/database"
+require "twitter/database_connection"
+require "twitter/user_sign_up"
