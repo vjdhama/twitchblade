@@ -1,8 +1,8 @@
 module Twitter
   #perform command line operation
   class CommandLineInterface
-    def initialize
-      @db_connection = DatabaseConnection.new(ENV["dbname"])
+    def initialize     
+      @db_connection = DatabaseConnection.new(ENV["dbname"]).conn
       @@errors = [] 
     end
 
@@ -11,32 +11,56 @@ module Twitter
     end
 
     def run
-      while(input = get_input)
+      while(true)
         display_banner
-        process(input)
+        output = process_banner_input(get_input)
+        display_banner_output(output)
       end
     end
 
-    def process(choice)
-      if choice == 3
+    def process_banner_input(choice)
+      if choice == "1"
+        inputs = get_inputs(SignUpInterface::INPUTS, "SignUp")
+        SignUpInterface.new(@db_connection, inputs).process
+      elsif choice == "2"
+        exit
+      else
         @@errors << "Invalid option"
-        display_error
       end
     end
 
     private
+
+    def display_banner_output(output)
+      if output.is_a?(String)
+        puts output
+      else
+        puts @@errors.last
+      end
+    end
+
+    def get_inputs(input_requirements, operation)
+      inputs = []
+      puts "\n\t" + operation
+      puts
+      input_requirements.each do |credential|
+        print credential + " : "
+        inputs << get_input.downcase
+      end
+      inputs
+    end
 
     def display_error
       puts @@errors.last
     end
 
     def display_banner
-      puts "1. SignUp 2. Exit"
-      puts "Enter a number(1/2)"
+      puts "\n\t1. SignUp 2. Exit\n\n"
+      print  "Enter a number : "
     end
 
     def get_input
-      gets.chomp
+      Kernel.gets.chomp
     end
   end
 end
