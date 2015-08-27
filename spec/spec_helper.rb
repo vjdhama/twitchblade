@@ -1,8 +1,6 @@
 require "twitter"
 
-environment = "testing"
-
-Figaro.application = Figaro::Application.new(environment: environment, path: "config/application.yml")
+Figaro.application = Figaro::Application.new(environment: "testing", path: "config/application.yml")
 Figaro.load
 
 RSpec.configure do |config|

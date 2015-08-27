@@ -1,4 +1,5 @@
 module Twitter
+  #perform user operations
   class User
 
     def initialize(username, password, db_connection)
@@ -11,13 +12,14 @@ module Twitter
       result = @db_connection.exec("select username from users where username = '#{@username}'")
       if result.ntuples == 0  
         @db_connection.exec("insert into users (username, password) values ('#{@username}', '#{@password}')")
+        "You're Signed Up"
       else
-        :username_exits
+        "Username Not Available"
       end
     end
 
     def valid?
-      @username.empty? || @password.empty? ? false : true
+      (@username.empty? || @password.empty?) ? false : true
     end
 
   end
