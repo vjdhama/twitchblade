@@ -18,19 +18,15 @@ module Twitter
       @connection.conn.exec("delete from users")
     end
 
-    context "#username_available?" do
-      it "will check if user already exits" do
-        expect(@user_sign_up_1.username_available?).to eq(false)
-      end
-        
-      it "will check if user not already present" do
-        expect(@user_sign_up_2.username_available?).to eq(true)
-      end
-    end
-
     it "should insert username password tuple into users table if valid" do
       username = "vjdhama"
       @user_sign_up_2.sign_up
+      expect(@connection.conn.exec("select username from users where username='#{username}'").ntuples).to eq(1)
+    end
+
+    it "should not insert username password tuple into users if username already present" do
+      username = "vijay"
+      @user_sign_up_1.sign_up
       expect(@connection.conn.exec("select username from users where username='#{username}'").ntuples).to eq(1)
     end
   end

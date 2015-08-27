@@ -7,13 +7,9 @@ module Twitter
       @db_connection = db_connection
     end 
 
-    def username_available?
-      result = @db_connection.exec("select username from users where username = '#{@username}'")
-      result.ntuples == 0 ? true : false
-    end
-
     def sign_up
-      @db_connection.exec("insert into users (username, password) values ('#{@username}', '#{@password}')") if username_available?
+      result = @db_connection.exec("select username from users where username = '#{@username}'")
+      @db_connection.exec("insert into users (username, password) values ('#{@username}', '#{@password}')") if result.ntuples == 0
     end
   end
 end
