@@ -17,11 +17,7 @@ module Twitter
     end
 
     def valid?
-      if @username.empty?
-        false
-      elsif @password.empty?
-        false
-      end
+      @username.empty? || @password.empty? ? false : true
     end
 
   end

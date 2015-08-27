@@ -38,5 +38,9 @@ module Twitter
       invalid_user = User.new("adw", "", @connection.conn)
       expect(invalid_user.valid?).to eq(false)
     end
+
+    it "should be valid on non empty input for both username and password" do
+      expect(@user.valid?).to eq(true)
+    end
   end
 end
