@@ -9,7 +9,16 @@ module Twitter
 
     def sign_up
       result = @db_connection.exec("select username from users where username = '#{@username}'")
-      @db_connection.exec("insert into users (username, password) values ('#{@username}', '#{@password}')") if result.ntuples == 0
+      if result.ntuples == 0  
+        @db_connection.exec("insert into users (username, password) values ('#{@username}', '#{@password}')")
+      else
+        :username_exits
+      end
     end
+
+    def valid?
+      !@username.empty?
+    end
+
   end
 end

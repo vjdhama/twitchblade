@@ -28,5 +28,10 @@ module Twitter
       @user.sign_up
       expect(@connection.conn.exec("select username from users where username='#{username}'").ntuples).to eq(1)
     end
+
+    it "should check if password is empty" do
+      invalid_user = User.new("", "123", @connection.conn)
+      expect(invalid_user.valid?).to eq(false)
+    end
   end
 end
