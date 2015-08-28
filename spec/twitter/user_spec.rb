@@ -8,7 +8,8 @@ module Twitter
     end
 
     before(:each) do
-      @user = User.new("vijay", "123", @connection.conn)
+      @user = User.new('vijay', '123', @connection.conn)
+      @invalid_user = User.new('aninda', '123', @connection.conn)
       @connection.conn.exec("insert into users (username, password) values ('vijay', '123')")
       @connection.conn.exec("insert into users (username, password) values ('vjdhama', 'qza')")
     end
@@ -41,6 +42,14 @@ module Twitter
 
     it "should be valid on non empty input for both username and password" do
       expect(@user.valid?).to eq(true)
+    end
+
+    it "should check if valid login credentials are valid" do
+      expect(@user.login).to eq("Logged In")
+    end
+
+    it "should check if invalid login credentials are not valid" do
+      expect(@invalid_user.login).to eq("Invalid Credentials")
     end
   end
 end

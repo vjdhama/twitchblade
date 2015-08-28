@@ -18,6 +18,15 @@ module Twitter
       end
     end
 
+    def login
+      result = @db_connection.exec("select username, password from users where username = '#{@username}' and password = '#{@password}'")
+      if result.ntuples == 1
+        "Logged In"
+      else
+        "Invalid Credentials"
+      end
+    end
+
     def valid?
       (@username.empty? || @password.empty?) ? false : true
     end
