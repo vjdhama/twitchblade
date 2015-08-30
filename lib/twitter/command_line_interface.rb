@@ -1,7 +1,7 @@
 module Twitter
   #perform command line operation
   class CommandLineInterface
-    def initialize     
+    def initialize
       @db_connection = DatabaseConnection.new(ENV["dbname"]).conn
       @@errors = [] 
     end
@@ -60,7 +60,7 @@ module Twitter
     end
 
     def get_input
-      Kernel.gets.chomp
+      $stdin.gets.chomp
     end
   end
 end
