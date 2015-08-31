@@ -42,6 +42,12 @@ Vagrant.configure(2) do |config|
     ~/.rbenv/shims/gem install bundler
     cd ~/app
     ~/.rbenv/shims/bundle install
+    sudo -u postgres psql -c "create user vagrant with superuser;"
+    sudo -u postgres psql -c "alter user vagrant with login;"
+    sudo -u postgres psql -c "alter user vagrant with createdb;"
+    sudo -u postgres psql -c "create database vagrant;"
+    sudo -u vagrant psql -c "create database twitter_staging;"
+    sudo -u vagrant psql -c "create database twitter_spec;"
     SHELL
 end
 
