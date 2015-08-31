@@ -55,7 +55,7 @@ module Twitter
     end
 
     def display_banner
-      puts "\n\t1. SignUp 2. Exit\n\n"
+      puts "\n\t1. SignUp  2. Exit\n\n"
       print  "Enter a number : "
     end
 
