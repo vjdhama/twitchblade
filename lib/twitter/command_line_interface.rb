@@ -23,9 +23,12 @@ module Twitter
         inputs = get_inputs(SignUpInterface::INPUTS, "SignUp")
         SignUpInterface.new(@db_connection, inputs).process
       elsif choice == "2"
+        inputs = get_inputs(LoginInterface::INPUTS, "Login")
+        LoginInterface.new(@db_connection, inputs).process
+      elsif choice == "3"
         exit
       else
-        @@errors << "Invalid option"
+        @@errors << "Invalid choice. Try again!!"
       end
     end
 
@@ -55,8 +58,8 @@ module Twitter
     end
 
     def display_banner
-      puts "\n\t1. SignUp  2. Exit\n\n"
-      print  "Enter a number : "
+      puts "\n\t1. SignUp    2. Login    3. Exit\n\n"
+      print  "Enter a choice : "
     end
 
     def get_input
