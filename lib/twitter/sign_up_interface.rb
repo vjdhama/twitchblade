@@ -1,5 +1,5 @@
 module Twitter
-  #process raw input and persist
+  #validate raw input
   class SignUpInterface
     INPUTS = ['Username', 'Password']
 
@@ -10,7 +10,7 @@ module Twitter
 
     def process
       user = User.new(@inputs[0], @inputs[1] , @db_connection)
-      if user.valid?
+      if user.valid_credentials?
         user.sign_up
       else
         "Bad Username or Password"

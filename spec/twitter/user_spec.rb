@@ -32,16 +32,16 @@ module Twitter
 
     it "should check if username is empty" do
       invalid_user = User.new("", "123", @connection.conn)
-      expect(invalid_user.valid?).to eq(false)
+      expect(invalid_user.valid_credentials?).to eq(false)
     end
 
     it "should check for empty passsword" do
       invalid_user = User.new("adw", "", @connection.conn)
-      expect(invalid_user.valid?).to eq(false)
+      expect(invalid_user.valid_credentials?).to eq(false)
     end
 
     it "should be valid on non empty input for both username and password" do
-      expect(@user.valid?).to eq(true)
+      expect(@user.valid_credentials?).to eq(true)
     end
 
     it "should check if valid login credentials are valid" do
