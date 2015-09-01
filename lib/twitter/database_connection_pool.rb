@@ -1,6 +1,9 @@
 module Twitter
   class DatabaseConnectionPool
+    
     CONNECTION_LIMIT = 8
+
+    attr_reader :db_connections
     
     def initialize
       @db_connections = []
@@ -14,6 +17,11 @@ module Twitter
       else
         :db_connection_limit_reached
       end
+    end
+
+    def close_db_connection(db_connection)
+      @db_connections.delete(db_connection)
+      db_connection.close
     end
 
     private
