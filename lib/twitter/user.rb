@@ -5,11 +5,10 @@ module Twitter
       @username = username
       @password = password
       @db_connection = db_connection
-      @logged_in = false
     end 
 
     def sign_up
-      result = @db_connection.exec("select username from users where username = '#{@username}'")
+      result = @db_connection.exec("select username from users where username = $1", [@username])
       if result.ntuples == 0  
         @db_connection.exec("insert into users (username, password) values ('#{@username}', '#{@password}')")
         "You're Signed Up"
