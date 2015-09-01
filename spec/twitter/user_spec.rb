@@ -51,5 +51,10 @@ module Twitter
     it "should check if invalid login credentials are not valid" do
       expect(@invalid_user.login).to eq("Invalid Credentials")
     end
+
+    it "should logout the user" do
+      @user.login
+      expect(@user.logout).to eq("Logged Out") 
+    end
   end
 end
