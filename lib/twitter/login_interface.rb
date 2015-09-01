@@ -1,4 +1,5 @@
 module Twitter
+  #interface for Login
   class LoginInterface
     INPUTS = ['Username', 'Password']
 

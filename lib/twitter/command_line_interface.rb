@@ -19,16 +19,24 @@ module Twitter
     end
 
     def process_banner_input(choice)
-      if choice == "1"
-        inputs = get_inputs(SignUpInterface::INPUTS, "SignUp")
-        SignUpInterface.new(@db_connection, inputs).process
-      elsif choice == "2"
-        inputs = get_inputs(LoginInterface::INPUTS, "Login")
-        LoginInterface.new(@db_connection, inputs).process
-      elsif choice == "3"
-        exit
+      if LoggedIn.username.nil?
+        if choice == "1"
+          inputs = get_inputs(SignUpInterface::INPUTS, "SignUp")
+          SignUpInterface.new(@db_connection, inputs).process
+        elsif choice == "2"
+          inputs = get_inputs(LoginInterface::INPUTS, "Login")
+          LoginInterface.new(@db_connection, inputs).process
+        elsif choice == "3"
+          exit
+        else
+          @@errors << "Invalid choice. Try again!!"
+        end
       else
-        @@errors << "Invalid choice. Try again!!"
+        if choice == "1"
+          LoggedIn.user.logout
+        else
+          @@errors << "Invalid choice. Try again!!"
+        end
       end
     end
 
@@ -58,8 +66,13 @@ module Twitter
     end
 
     def display_banner
-      puts "\n\t1. SignUp    2. Login    3. Exit\n\n"
-      print  "Enter a choice : "
+      if LoggedIn.username.nil?
+        puts "\n\t1. SignUp    2. Login    3. Exit\n\n"
+        print  "Enter a choice : "
+      else
+        puts "\n\t1. Logout\n\n"
+        print  "Enter a choice : "
+      end
     end
 
     def get_input
