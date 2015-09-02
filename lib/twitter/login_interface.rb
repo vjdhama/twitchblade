@@ -3,13 +3,12 @@ module Twitter
   class LoginInterface
     INPUTS = ['Username', 'Password']
 
-    def initialize(db_connection, inputs)
-      @db_connection = db_connection
+    def initialize(inputs)
       @inputs = inputs
     end
 
     def process
-      user = User.new(@inputs[0], @inputs[1] , @db_connection)
+      user = User.new(@inputs[0], @inputs[1])
       if user.valid_credentials?
         user.login
       else

@@ -2,7 +2,6 @@ module Twitter
   #perform command line operation
   class CommandLineInterface
     def initialize
-      @db_connection = DatabaseConnection.new(ENV["dbname"]).conn
       @@errors = [] 
     end
 
@@ -22,11 +21,12 @@ module Twitter
       if LoggedIn.username.nil?
         if choice == "1"
           inputs = get_inputs(SignUpInterface::INPUTS, "SignUp")
-          SignUpInterface.new(@db_connection, inputs).process
+          SignUpInterface.new(inputs).process
         elsif choice == "2"
           inputs = get_inputs(LoginInterface::INPUTS, "Login")
-          LoginInterface.new(@db_connection, inputs).process
+          LoginInterface.new(inputs).process
         elsif choice == "3"
+          Connection.close
           exit
         else
           @@errors << "Invalid choice. Try again!!"

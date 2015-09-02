@@ -2,15 +2,17 @@
 
 $LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), "..", "lib")))
 
-require "twitter"
+require "figaro"
 
 POSSIBLE_ARGS = ['development', 'staging']
 
 if POSSIBLE_ARGS.include?(ARGV[1])
   Figaro.application = Figaro::Application.new(environment: ARGV[1], path: "../config/application.yml")
   Figaro.load
-  Twitter::CommandLineInterface.new().run
 else
   puts "Usage: twitter -e [ENVIRONMENT]"
 end
 
+require "twitter"
+
+Twitter::CommandLineInterface.new.run

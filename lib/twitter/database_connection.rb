@@ -1,11 +1,18 @@
 module Twitter
   #perform queries
   class DatabaseConnection
-    attr_reader :conn
 
-    def initialize(dbname)
-      @conn = PGconn.open(:dbname => dbname)
-      @conn
+    def initialize
+      @connection = PGconn.open(:dbname => ENV["dbname"])
+    end
+
+    def open
+      @connection
+    end
+
+    def close
+      @connection.close
     end
   end
+  Connection = DatabaseConnection.new
 end
