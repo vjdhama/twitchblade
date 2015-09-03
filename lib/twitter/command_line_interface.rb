@@ -29,13 +29,13 @@ module Twitter
           Connection.close
           exit
         else
-          @@errors << "Invalid choice. Try again!!"
+          @@errors << "\n\tInvalid choice. Try again!!"
         end
       else
         if choice == "1"
           LoggedIn.user.logout
         else
-          @@errors << "Invalid choice. Try again!!"
+          @@errors << "\n\tInvalid choice. Try again!!"
         end
       end
     end
@@ -76,7 +76,7 @@ module Twitter
     end
 
     def get_input
-      $stdin.gets.chomp
+      $stdin.gets.chomp.strip
     end
   end
 end
