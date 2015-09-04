@@ -2,6 +2,7 @@ require "spec_helper"
 
 module Twitter
   describe "CommandLineInterface" do
+    
     before(:each){ @cli = CommandLineInterface.new }
 
     it "checks if, for user option 1 it gets 2 inputs" do

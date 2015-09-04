@@ -15,6 +15,6 @@ module Twitter
     it "should call user login on valid input" do
       expect_any_instance_of(User).to receive(:login)
       @login_interface.process
-    end
+    end 
   end
 end
