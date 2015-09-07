@@ -1,4 +1,5 @@
 module Twitter
+  #Db queries for tweet
   class TweetModel
     INPUTS = ["Tweet"]
 

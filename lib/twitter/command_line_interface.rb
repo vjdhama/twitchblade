@@ -76,7 +76,7 @@ module Twitter
     end
 
     def get_input
-      $stdin.gets.chomp.strip
+      $stdin.gets.strip
     end
   end
 end
