@@ -5,6 +5,8 @@ module Twitter
 
     def get_tweet
       tweet_content = []
+      puts "\n\tTweet"
+      puts 
       INPUTS.each do |input|
         print input + " : "
         tweet_content << user_input

@@ -9,7 +9,8 @@ module Twitter
       while empty?
         @content = TweetInterface.new.get_tweet
       end
-      @model = TweetModel.new(@content).save
+      @model = TweetModel.new(@content[0]).save
+      "\n\tYou Tweeted : " + @content[0]
     end
 
     private

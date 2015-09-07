@@ -33,6 +33,8 @@ module Twitter
         end
       else
         if choice == "1"
+          TweetController.new.tweet
+        elsif choice == "2"
           LoggedIn.user.logout
         else
           @@errors << "\n\tInvalid choice. Try again!!"
@@ -70,7 +72,7 @@ module Twitter
         puts "\n\t1. SignUp    2. Login    3. Exit\n\n"
         print  "Enter a choice : "
       else
-        puts "\n\t1. Logout\n\n"
+        puts "\n\t1. Tweet    2.Logout\n\n"
         print  "Enter a choice : "
       end
     end
