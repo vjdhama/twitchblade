@@ -10,3 +10,5 @@ require "twitter/sign_up_interface"
 require "twitter/logged_in"
 require "twitter/login_interface"
 require "twitter/tweet_model"
+require "twitter/tweet_controller"
+
