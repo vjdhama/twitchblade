@@ -5,7 +5,7 @@ module Twitter
     
     before(:each) { @interface = TimelineInterface.new(["i am batman", "i am crazy"]) }
 
-    it "foo" do
+    it "should display content to STDOUT" do
       expect(Kernel).to receive(:puts).thrice
       @interface.render
     end

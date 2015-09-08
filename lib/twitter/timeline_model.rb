@@ -1,4 +1,5 @@
 module Twitter
+  #Executes database queries related to timeline 
   class TimelineModel
     def initialize(username)
       @username = username

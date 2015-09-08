@@ -5,8 +5,6 @@ module Twitter
 
     def get_tweet
       tweet_content = []
-      puts "\n\tTweet"
-      puts 
       INPUTS.each do |input|
         print input + " : "
         tweet_content << user_input
@@ -15,6 +13,11 @@ module Twitter
     end
 
     private
+
+    def display_header      
+      puts "\n\tTweet"
+      puts 
+    end
 
     def user_input
       $stdin.gets.strip
