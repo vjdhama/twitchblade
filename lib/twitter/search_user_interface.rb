@@ -2,19 +2,20 @@ module Twitter
   class SearchUserInterface
 
     def initialize
-
+      @username = ""
     end
 
     def get_username
-      $stdin.gets.strip
+      @username = $stdin.gets.strip
+      @username
     end
-
-    private
 
     def render_header
       $stdin.puts "\n\tSearch"
       $stdin.puts
     end
+
+    private
 
     def render_requirement
       puts "Enter a username for searching"
