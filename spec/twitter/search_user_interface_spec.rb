@@ -18,5 +18,15 @@ module Twitter
       expect($stdin).to receive(:print)
       @interface.render_requirement
     end  
+
+    it "should render success" do
+      expect($stdin).to receive(:puts)
+      @interface.render_success
+    end
+
+    it "should render success" do
+      expect($stdin).to receive(:puts)
+      @interface.render_failure
+    end
   end
 end
