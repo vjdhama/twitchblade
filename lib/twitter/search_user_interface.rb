@@ -15,11 +15,8 @@ module Twitter
       $stdin.puts
     end
 
-    private
-
     def render_requirement
-      puts "Enter a username for searching"
-      print "Username : "
+      $stdin.print "Username : "
     end
   end
 end

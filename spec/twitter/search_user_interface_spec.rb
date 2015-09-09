@@ -13,5 +13,10 @@ module Twitter
       expect($stdin).to receive(:puts).twice
       @interface.render_header
     end
+
+    it "should render requirements" do
+      expect($stdin).to receive(:print)
+      @interface.render_requirement
+    end  
   end
 end
