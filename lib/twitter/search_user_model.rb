@@ -1,4 +1,5 @@
 module Twitter
+  #db queries for searching user
   class SearchUserModel
     def initialize(username)
       @username = username
