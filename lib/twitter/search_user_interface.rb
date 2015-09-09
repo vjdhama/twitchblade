@@ -6,25 +6,25 @@ module Twitter
     end
 
     def get_username
-      @username = Kernel.gets.strip
+      @username = $stdin.gets.strip
       @username
     end
 
     def render_header
-      Kernel.puts "\n\tSearch"
-      Kernel.puts
+      $stdout.puts "\n\tSearch"
+      $stdout.puts
     end
 
     def render_requirement
-      Kernel.print "Username : "
+      $stdout.print "Username : "
     end
 
     def render_success
-      Kernel.puts "Found : '#{@username}'"
+      $stdout.puts "Found : '#{@username}'"
     end
 
     def render_failure
-      Kernel.puts "Could not find '#{@username}' in our system"
+      $stdout.puts "Could not find user '#{@username}' in our system"
     end
   end
 end

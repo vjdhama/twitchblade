@@ -11,6 +11,7 @@ module Twitter
       username = @interface.get_username
       @model = SearchUserModel.new(username)
       @model.found_user? ? @interface.render_success : @interface.render_failure
+      ""
     end
   end
 end
