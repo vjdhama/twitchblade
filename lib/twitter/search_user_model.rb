@@ -6,7 +6,7 @@ module Twitter
     end
 
     def found_user?
-      result = Connection.open.exec("select * from users where username = '#{@username}'")
+      result = Connection.open.exec("select * from users where username = $1", [@username])
       result.ntuples > 0 ? true : false
     end
   end

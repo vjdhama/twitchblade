@@ -11,12 +11,12 @@ module Twitter
       name = "vjdhama"
       password = "password"
 
-      Connection.open.exec("insert into users (username, password) values ('#{name}', '#{password}')")
+      Connection.open.exec("insert into users (username, password) values ($1, $2)", [name, password])
 
       user_id = get_id(name)
 
-      Connection.open.exec("insert into tweets (content, user_id) values ('Go home', '#{user_id}')")
-      Connection.open.exec("insert into tweets (content, user_id) values ('Call my phone', '#{user_id}')")
+      Connection.open.exec("insert into tweets (content, user_id) values ('Go home', $1)", [user_id])
+      Connection.open.exec("insert into tweets (content, user_id) values ('Call my phone', $1)", [user_id])
 
       @timeline_model = TimelineModel.new(name)
     end
