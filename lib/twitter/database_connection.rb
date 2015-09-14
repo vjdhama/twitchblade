@@ -24,7 +24,7 @@ module Twitter
     
     def seed_tables
       @connection.exec("create table if not exists users (uid serial primary key, username varchar (50), password varchar(50));")
-      @connection.exec("create table if not exists users (uid serial primary key, username varchar (50), password varchar(50));")
+      @connection.exec("create table if not exists tweets (tweet_id serial primary key, content varchar (140), user_id integer not null references users(uid));")
     end
   end
   Connection = DatabaseConnection.new
