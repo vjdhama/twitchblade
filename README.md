@@ -1,21 +1,18 @@
-# Twitter Clone
+# TwitchBlade
 Twitter clone is a cli application designed to mimick most feature provided by twitter application.
 
-##Prerequisites
+##Twitchblade first time setup
 
-    ruby
-    bundler
+    git clone git@bitbucket.org:vjdhama/twitchblade.git
+    cd twitchblade
+    bundle install 
 
-##Build
+**Check for db setup**
 
-    git clone https://github.com/vjdhama/twitter.git
-    cd twitter
-    bundle install
+    rake create_tables staging
 
-##Run specs
 
-    bundle exec rspec
-
-##Run independent specs
-
-    bundle exec rspec SPEC_FILE_PATH[:LINE]
+##Run Twitchblade
+    
+    cd bin
+    ./twitter -e staging
