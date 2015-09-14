@@ -25,7 +25,7 @@ module Twitter
     def run
       while(true)
         @interface.render_menu
-        input = @interface.get_menu_input
+        input = @interface.get_menu_option
         if  input == "1"
           TimelineController.new(@username).process
         elsif input == "2"
