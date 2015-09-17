@@ -29,6 +29,8 @@ module Twitter
         if  input == "1"
           TimelineController.new(@username).process
         elsif input == "2"
+          FollowController.new(LoggedIn.username, @username).process
+        elsif input == "3"
           break
         else
           @interface.print_invalid_input

@@ -33,7 +33,7 @@ module Twitter
 
     def render_menu
       $stdout.puts
-      $stdout.puts "\t1. Timeline    2. Go Back"
+      $stdout.puts "\t1. Timeline    2. Follow    3. Go Back"
       $stdout.puts
       $stdout.print "\tEnter a option : "
     end
