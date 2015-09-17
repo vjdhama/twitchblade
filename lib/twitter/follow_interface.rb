@@ -1,4 +1,5 @@
 module Twitter
+  #display failure and success message for follow
   class FollowInterface
     def render_follow_error
       puts

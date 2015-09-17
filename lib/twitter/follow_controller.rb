@@ -1,4 +1,5 @@
 module Twitter
+  #follow someone
   class FollowController
     def initialize(follower, followed)
       @follower = follower
