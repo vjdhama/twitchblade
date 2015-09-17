@@ -3,7 +3,7 @@ module Twitter
     def initialize(follower, followed)
       @follower = follower
       @followed = followed
-      @model = FollowModel.new(@follower, @followed)
+      @model = FollowModel.new(follower, followed)
       @interface = FollowInterface.new
     end
 
