@@ -16,27 +16,27 @@ module Twitter
       end
     end
 
-    def execute
-      inputs = get_credentials
-      user = User.new(inputs[0], inputs[1])
-      if user.valid_credentials?
-        user.login
-      else
-        "Empty username of password."
-      end
-    end
+    #   def execute
+    #     inputs = get_credentials
+    #     user = User.new(inputs[0], inputs[1])
+    #     if user.valid_credentials?
+    #       user.login
+    #     else
+    #       "Empty username of password."
+    #     end
+    #   end       
 
-    private
+    #   private       
 
-    def get_credentials
-      inputs = []
-      puts "\n\tLogin"
-      puts
-      INPUTS.each do |credential|
-        print credential + " : "
-        inputs << get_input.downcase
-      end
-      inputs
-    end
+    #   def get_credentials
+    #     inputs = []
+    #     puts "\n\tLogin"
+    #     puts
+    #     INPUTS.each do |credential|
+    #       print credential + " : "
+    #       inputs << get_input.downcase
+    #     end
+    #     inputs
+    #   end
   end
 end

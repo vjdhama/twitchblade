@@ -1,4 +1,4 @@
-require "spec_helper"
+ require "spec_helper"
 
 module Twitter
   describe "TimelineModel" do
@@ -11,6 +11,7 @@ module Twitter
       name = "vjdhama"
       password = "password"
 
+      Connection.open.exec("begin")
       Connection.open.exec("insert into users (username, password) values ($1, $2)", [name, password])
 
       user_id = get_id(name)
@@ -22,8 +23,7 @@ module Twitter
     end
 
     after(:each) do 
-      Connection.open.exec("delete from tweets")
-      Connection.open.exec("delete from users")
+      Connection.open.exec("rollback")
     end
 
     it "should get tweets based on logged in user" do
