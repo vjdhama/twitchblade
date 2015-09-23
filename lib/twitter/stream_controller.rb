@@ -6,7 +6,25 @@ module Twitter
 
     def process
       tweets = @model.get_all_tweets
-      StreamInterface.new(tweets).render
+      @interface = StreamInterface.new(tweets)
+      @interface.render
+      run
+    end
+
+    private 
+
+    def run
+      option = ""
+      while option != "1" or option != "2"
+        option = @interface.render_menu
+        if option == "1"
+          RetweetController.new(@model.data).process
+        elsif option == "2"
+          break
+        else
+          @interface.render_option_error
+        end
+      end
     end
   end
 end

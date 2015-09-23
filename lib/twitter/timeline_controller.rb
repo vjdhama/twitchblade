@@ -7,7 +7,7 @@ module Twitter
 
     def process
       tweets = @model.get_tweets
-      TimelineInterface.new(tweets).render
+      @interface = TimelineInterface.new(tweets).render
     end
   end
 end

@@ -1,15 +1,21 @@
 module Twitter
   #Executes database queries related to timeline 
   class TimelineModel
+    attr_reader :data
+    
     def initialize(username)
       @username = username
+      @data = {}
     end
 
     def get_tweets
       tweets = []
       user_id = get_user_id
-      result = Connection.open.exec("select content from tweets where user_id = $1", [user_id])
-      result.each {|tuple| tweets << tuple["content"]}
+      result = Connection.open.exec("select content, tweet_id from tweets where user_id = $1", [user_id])
+      result.each do |tuple| 
+        tweets << tuple["content"]
+        @data[result.find_index(tuple) + 1] =  tuple["tweet_id"]
+      end
       tweets
     end
 
