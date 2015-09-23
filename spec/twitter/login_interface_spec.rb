@@ -20,6 +20,11 @@ module Twitter
       allow_any_instance_of(User).to receive(:valid_credentials?).and_return(true)
       expect_any_instance_of(User).to receive(:login)
       @login_interface.process
+    end
+
+    it "should return username or password empty error" do
+      allow_any_instance_of(User).to receive(:valid_credentials?).and_return(false)
+      expect(@login_interface.process).to eq("Empty username or password.")
     end 
   end
 end
