@@ -4,8 +4,6 @@ require "pg"
 
 RSpec::Core::RakeTask.new(:spec)
 
-
-
 desc "Run the default task"
 task :default => [:spec]
 
@@ -21,7 +19,7 @@ task :create_tables do
   )
   
   connection.exec("create table if not exists users (uid serial primary key, username varchar (50), password varchar(50));")
-  connection.exec("create table if not exists tweets (tweet_id serial primary key, content varchar (140), user_id integer not null references users(uid));")
-  
+  connection.exec("create table if not exists tweets (tweet_id serial primary key, content varchar (140), user_id integer not null references users(uid), retweet_id integer default 0);")
+  connection.exec("create table if not exists follow (follow_id serial primary key, follower_id integer not null references users(uid), followed_id integer not null references users(uid));") 
   connection.close
 end
