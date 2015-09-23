@@ -12,7 +12,7 @@ module Twitter
       if user.valid_credentials?
         user.login
       else
-        "Empty username of password."
+        "Empty username or password."
       end
     end
 
