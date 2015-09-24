@@ -4,6 +4,7 @@
 Vagrant.configure(2) do |config|
   config.vm.define "db" do |node|
     node.vm.network :private_network, ip: "33.33.33.10"
+    node.vm.synced_folder "./db/", "/home/vagrant/db"
     node.vm.provision "shell", privileged: false,  path: "./provisions/db.sh"
   end
 
