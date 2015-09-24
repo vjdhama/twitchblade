@@ -1,7 +1,7 @@
 require "spec_helper"
 
 module Twitter
-  describe "User" do
+  describe User do
 
     before(:each) do
       @user = User.new('vijay', '123')
