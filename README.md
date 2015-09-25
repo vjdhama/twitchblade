@@ -7,11 +7,6 @@ Twitter clone is a cli application designed to mimick most feature provided by t
     cd twitchblade
     bundle install 
 
-**Check for db setup**
-
-    rake create_tables staging
-
-
 ##Run Twitchblade
     
     cd bin
