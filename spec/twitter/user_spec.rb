@@ -6,18 +6,19 @@ module Twitter
     before(:each) do
       @user = User.new('vijay', '123')
       @invalid_user = User.new('aninda', '123')
+      Connection.open.exec("begin")
       Connection.open.exec("insert into users (username, password) values ('vijay', '123')")
       Connection.open.exec("insert into users (username, password) values ('vjdhama', 'qza')")
     end
 
     after(:each) do
-      Connection.open.exec("delete from users")
+      Connection.open.exec("rollback")
     end
 
     it "should insert username password tuple into users table if valid" do
       username = "vjdhama"
       @user.sign_up
-      expect(Connection.open.exec("select username from users where username='#{username}'").ntuples).to eq(1)
+      expect(Connection.open.exec("select username from users where username = $1", [username]).ntuples).to eq(1)
     end
 
     it "should not insert username password tuple into users if username already present" do
